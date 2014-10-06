@@ -30,4 +30,12 @@ public class Bear implements Item{
 		return Color.red;
 	}
 
+
+
+	@Override
+	public void setLocation(Point p) {
+		// TODO Auto-generated method stub
+		currentLocation = p;
+	}
+
 }

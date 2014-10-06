@@ -1,0 +1,73 @@
+	/**
+	 * Gets an item then tries to move it. We compare the incoming item to all items to check for collisions.
+	 * If no collisions are found we move 'i' based on a random r
+	 * @param i - The incoming item we are compareing
+	 * @param c - The spot of the index of the current item
+	 */
+	public void moveItem(Item i, int c){
+		Point newPoint;
+		Random r = new Random();
+		
+			switch(r.nextInt(4)){
+				case 1://Attempt to move up increase y buy 10
+					System.out.println("Case1");
+					newPoint = new Point(i.getLocation().x, i.getLocation().y+SQUARE_SIDE);
+					if(checkBounds(newPoint)){
+						for(Item i2:allItems){
+							if(!noCollisionCheck(i2.getLocation(),newPoint)){
+								break;
+							}
+							else{
+								allItems.get(c).setLocation(new Point(i.getLocation().x,i.getLocation().y+SQUARE_SIDE));
+							}
+						}
+					}
+					break;
+				case 2://Attempt to move down increase y by -10
+					System.out.println("Case 2");
+
+					newPoint = new Point(i.getLocation().x, i.getLocation().y-SQUARE_SIDE);
+					if(checkBounds(newPoint)){
+						for(Item i2:allItems){
+							if(!noCollisionCheck(i2.getLocation(),newPoint)){
+								break;
+							}
+							else{
+								allItems.get(c).setLocation(new Point(i.getLocation().x,i.getLocation().y-SQUARE_SIDE));
+							}
+						}
+					}
+					break;
+				case 3://Attempt to move right increase x by 10
+					System.out.println("Case 3");
+					newPoint = new Point(i.getLocation().x+SQUARE_SIDE, i.getLocation().y);
+					if(checkBounds(newPoint)){
+						for(Item i2:allItems){
+							if(!noCollisionCheck(i2.getLocation(),newPoint)){
+								break;
+							}
+							else{
+								allItems.get(c).setLocation(new Point(i.getLocation().x+SQUARE_SIDE,i.getLocation().y));
+								
+							}
+						}
+					}
+					break;
+				case 4://Attempt to move left incrase x by -10
+					System.out.println("Case 4");
+					newPoint = new Point(i.getLocation().x-SQUARE_SIDE, i.getLocation().y);
+					if(checkBounds(newPoint))
+						for(Item i2:allItems){{
+							if(!noCollisionCheck(i2.getLocation(),newPoint)){
+								break;
+							}
+							else{
+								allItems.get(c).setLocation(new Point(i.getLocation().x-SQUARE_SIDE,i.getLocation().y));
+								
+							}
+						break;
+						}
+					}
+		}
+		repaint();
+	}

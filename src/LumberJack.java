@@ -29,4 +29,10 @@ public class LumberJack implements Item{
 		return Color.BLACK;
 	}
 
+	@Override
+	public void setLocation(Point p) {
+		// TODO Auto-generated method stub
+		currentLocation=p;
+	}
+
 }
